@@ -16,11 +16,13 @@ int save_employee(employees add){
 
 int view_employees(){
 	std :: string employee_record;
+	employees get_data[10]; 
+
 	std :: fstream employee_data;
 	employee_data.open ("employees.txt");
+
 	if(employee_data.is_open()){
 		int i = 0;
-		employees get_data[10]; 
 		while(std :: getline(employee_data,employee_record)){
 			std :: istringstream ss(employee_record);
 			std :: string token;
