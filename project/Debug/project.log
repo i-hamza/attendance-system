@@ -1,24 +1,27 @@
-﻿Build started 5/24/2015 12:15:02 PM.
-     1>Project "C:\Users\Hamza_2\documents\visual studio 2010\Projects\project\project\project.vcxproj" on node 2 (build target(s)).
+﻿Build started 5/27/2015 9:30:11 AM.
+     1>Project "C:\Users\Hamza_2\Documents\Visual Studio 2010\Projects\project\project\project.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\project.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt file.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt function.cpp main.cpp view.cpp file.cpp
          file.cpp
+         view.cpp
+         main.cpp
+         function.cpp
+         Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Hamza_2\documents\visual studio 2010\Projects\project\Debug\project.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\project.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Hamza_2\documents\visual studio 2010\Projects\project\Debug\project.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Hamza_2\documents\visual studio 2010\Projects\project\Debug\project.lib" /MACHINE:X86 Debug\function.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Hamza_2\Documents\Visual Studio 2010\Projects\project\Debug\project.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\project.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Hamza_2\Documents\Visual Studio 2010\Projects\project\Debug\project.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Hamza_2\Documents\Visual Studio 2010\Projects\project\Debug\project.lib" /MACHINE:X86 Debug\function.obj
          Debug\main.obj
          Debug\view.obj
          Debug\file.obj
-         LINK : C:\Users\Hamza_2\documents\visual studio 2010\Projects\project\Debug\project.exe not found or not built by the last incremental link; performing full link
-         project.vcxproj -> C:\Users\Hamza_2\documents\visual studio 2010\Projects\project\Debug\project.exe
+         project.vcxproj -> C:\Users\Hamza_2\Documents\Visual Studio 2010\Projects\project\Debug\project.exe
        Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Hamza_2\documents\visual studio 2010\Projects\project\Debug\project.exe;#1" /manifest Debug\project.exe.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Hamza_2\Documents\Visual Studio 2010\Projects\project\Debug\project.exe;#1" /manifest Debug\project.exe.intermediate.manifest
        FinalizeBuildStatus:
          Deleting file "Debug\project.unsuccessfulbuild".
          Touching "Debug\project.lastbuildstate".
-     1>Done Building Project "C:\Users\Hamza_2\documents\visual studio 2010\Projects\project\project\project.vcxproj" (build target(s)).
+     1>Done Building Project "C:\Users\Hamza_2\Documents\Visual Studio 2010\Projects\project\project\project.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.84
+Time Elapsed 00:00:06.33

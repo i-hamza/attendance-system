@@ -22,38 +22,39 @@ int main_navbar(std::string message){
 
 int add_attendance(){
 	header();//load project heading
-	std::cout << "Add Attendance\n";
+	std::cout << "Add Attendance : \n";
+	redirect();
 	return 0;
 }
 
 int view_attendance(){
 	header();//load project heading
-	std::cout << "View Attendance\n";
-
+	std::cout << "View Attendance : \n";
+	redirect();
 	return 0;
 }
 
 int add_employee(){
 	header();//load project heading
-	std::cout << "Add Employee\n";
+	std::cout << "Add Employee : \n";
 	get_add_employee();
-
 	return 0;
 }
 
 int view_employee(){
 	header();//load project heading
-	std::cout << "View Employees\n";
+	std::cout << "View Employees : \n";
 	view_employees();
+	redirect();
 	return 0;
 }
 
 int search(){
 	header();//load project heading
-	std::cout << "Search\n";
+	std::cout << "Search : \n";
 	std::cout << "  Press following no. to perform task : \n";
 	std::cout << "   1 - By Date \n";
 	std::cout << "   2 - By Employee \n";
-
+	redirect();
 	return 0;
 }

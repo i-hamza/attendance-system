@@ -36,3 +36,16 @@ int get_add_employee(){
 	save_employee(new_user);
 	return 0;
 }
+
+int redirect(){
+	int value;
+	std :: cout << "\n\nPress 1 to return main menu or Press 0 to exit : ";
+	std :: cin >> value;
+	if (value == 1){
+		std :: string message = "";
+		main_navbar(message);//load main menu
+	}else if (value == 0){
+		exit(1);
+	}
+	return 0;
+}
