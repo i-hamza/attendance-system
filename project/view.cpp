@@ -44,7 +44,17 @@ int add_employee(){
 int view_employee(){
 	header();//load project heading
 	std::cout << "View Employees : \n";
-	view_employees();
+	employees get_data[SIZE]; 
+	int count = 0;
+	count = get_employees(get_data);
+	for (int i = 0; i < count; ++i){
+		std :: cout << "  " << get_data[i].id << " , ";
+		std :: cout << "  " << get_data[i].name << " , ";
+		std :: cout << "  " << get_data[i].father_name << " , ";
+		std :: cout << "  " << get_data[i].address << " , ";
+		std :: cout << "  " << get_data[i].contact << " \n";
+	}
+	edit_employee();
 	redirect();
 	return 0;
 }

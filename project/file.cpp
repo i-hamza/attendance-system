@@ -14,19 +14,6 @@ int save_employee(employees add){
 	return 0;
 }
 
-int view_employees(){
-	
-	employees get_data[SIZE]; 
-	int count = 0;
-	count = get_employees(get_data);
-	for (int i = 0; i < count; ++i){
-		std :: cout << "  " << get_data[i].name << " , ";
-		std :: cout << "  " << get_data[i].father_name << " , ";
-		std :: cout << "  " << get_data[i].address << " , ";
-		std :: cout << "  " << get_data[i].contact << " \n";
-	}
-	return 0;
-}
 
 int get_employees(employees get_data[]){
 	

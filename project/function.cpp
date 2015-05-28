@@ -37,6 +37,42 @@ int get_add_employee(){
 	return 0;
 }
 
+int edit_employee(){
+	int value;
+	int count; 
+	std :: cout << "Enter id of employee to edit : ";
+	std :: cin >> value;
+	employees get_data[SIZE];
+	count = get_employees(get_data);
+	for (int i = 0; i < count; ++i){
+		if(get_data[i].id == value){
+			std :: cin.ignore();
+			std :: cout << "  Enter Name : " ;
+			getline(std :: cin,get_data[i].name);
+			std :: cout << "  Enter Father Name : " ;
+			getline(std :: cin,get_data[i].father_name);
+			std :: cout << "  Enter Address : " ;
+			getline(std :: cin,get_data[i].address);			
+			std :: cout << "  Enter Contact : " ;
+			getline(std :: cin,get_data[i].contact);			
+
+		}
+	}
+	std::fstream employee_data;
+	employee_data.open ("employees.txt");
+	for (int i = 0; i < count; ++i){
+		employee_data << get_data[i].id << " , "
+		<< get_data[i].name << " , "
+		<< get_data[i].father_name << " , "
+		<< get_data[i].address << " , "
+		<< get_data[i].contact << std :: endl;
+	}
+	employee_data.close();
+	std :: string message = "";
+	main_navbar(message);
+	return 0;
+}
+
 int redirect(){
 	int value;
 	std :: cout << "\n\nPress 1 to return main menu or Press 0 to exit : ";
