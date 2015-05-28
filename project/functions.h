@@ -4,6 +4,8 @@
 #include <sstream>
 #include "structure.h"
 
+int const SIZE = 100;
+
 //view page functions
 extern int header();
 extern int main_navbar(std::string);
@@ -21,4 +23,5 @@ extern int redirect();
 //file page functions
 extern int save_employee(employees);
 extern int view_employees();
+extern int get_employees(employees[]);
 
