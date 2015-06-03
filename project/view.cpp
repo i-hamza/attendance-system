@@ -54,8 +54,7 @@ int view_employee(){
 		std :: cout << "  " << get_data[i].address << " , ";
 		std :: cout << "  " << get_data[i].contact << " \n";
 	}
-	edit_employee();
-	redirect();
+	modify();
 	return 0;
 }
 

@@ -37,6 +37,39 @@ int get_add_employee(){
 	return 0;
 }
 
+int modify(){
+	char value;
+	std :: cout << "\n\n  Press m/M to Modify Record or Press 1 to goto Main menu : ";
+	std :: cin >> value;
+	if (value == 'm' || value == 'M'){
+		select_modify();
+	}else if (value == '1'){
+		std :: string message = "";
+		main_navbar(message);//load main menu
+	}else{
+		modify();
+	}
+	return 0;
+}
+
+int select_modify(){
+	char value;
+	std :: cout << "\n  For Go to main menu press 1\n"
+				<< "  For edit record press e/E and to delete record press d/D : ";
+	std :: cin >> value;
+	if (value == 'e' || value == 'E'){
+		edit_employee();
+	}else if(value == 'd' || value == 'D'){
+		std :: cout << "Delete";
+	}else if(value == '1'){
+		std :: string message = "";
+		main_navbar(message);//load main menu
+	}else{
+		select_modify();
+	}
+	return 0;
+}
+
 int edit_employee(){
 	int value;
 	int count; 
@@ -58,20 +91,12 @@ int edit_employee(){
 
 		}
 	}
-	std::fstream employee_data;
-	employee_data.open ("employees.txt");
-	for (int i = 0; i < count; ++i){
-		employee_data << get_data[i].id << " , "
-		<< get_data[i].name << " , "
-		<< get_data[i].father_name << " , "
-		<< get_data[i].address << " , "
-		<< get_data[i].contact << std :: endl;
-	}
-	employee_data.close();
-	std :: string message = "";
+	save_edit(get_data,count);
+	std :: string message = "\nRecord has been Modified\n";
 	main_navbar(message);
 	return 0;
 }
+
 
 int redirect(){
 	int value;

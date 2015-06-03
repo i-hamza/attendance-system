@@ -3,10 +3,10 @@
 int save_employee(employees add){
 	  std::fstream employee_data;
 	  employee_data.open ("employees.txt" , std::ios::app);
-	  employee_data << add.id << " , "
+	  employee_data << add.id << ","
 		<< add.name << " , "
-		<< add.father_name << " , "
-		<< add.address << " , "
+		<< add.father_name << ","
+		<< add.address << ","
 		<< add.contact << std :: endl;
 	  employee_data.close();
 	  std :: string message = "\n  Record Has Been Added.\n";
@@ -14,6 +14,19 @@ int save_employee(employees add){
 	return 0;
 }
 
+int save_edit(employees get_data[] ,int count){
+	std::fstream employee_data;
+	employee_data.open ("employees.txt");
+	for (int i = 0; i < count; ++i){
+		employee_data << get_data[i].id << ","
+		<< get_data[i].name << ","
+		<< get_data[i].father_name << ","
+		<< get_data[i].address << ","
+		<< get_data[i].contact << std :: endl;
+	}
+	employee_data.close();
+	return 0;
+}
 
 int get_employees(employees get_data[]){
 	
