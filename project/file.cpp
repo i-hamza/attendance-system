@@ -4,7 +4,7 @@ int save_employee(employees add){
 	  std::fstream employee_data;
 	  employee_data.open ("employees.txt" , std::ios::app);
 	  employee_data << add.id << ","
-		<< add.name << " , "
+		<< add.name << ","
 		<< add.father_name << ","
 		<< add.address << ","
 		<< add.contact << std :: endl;
@@ -16,6 +16,7 @@ int save_employee(employees add){
 
 int save_edit(employees get_data[] ,int count){
 	std::fstream employee_data;
+	std::ofstream("employees.txt", std::ios::out).close();//remove data from file
 	employee_data.open ("employees.txt");
 	for (int i = 0; i < count; ++i){
 		employee_data << get_data[i].id << ","
@@ -23,6 +24,29 @@ int save_edit(employees get_data[] ,int count){
 		<< get_data[i].father_name << ","
 		<< get_data[i].address << ","
 		<< get_data[i].contact << std :: endl;
+	}
+	employee_data.close();
+	return 0;
+}
+
+int delete_record(int id){
+	int count;
+	employees get_data[SIZE];
+	count = get_employees(get_data);
+
+	std::fstream employee_data;
+	std::ofstream("employees.txt", std::ios::out).close();//remove data from file
+	employee_data.open ("employees.txt");
+	for (int i = 0; i < count; ++i){
+		if (get_data[i].id != id){
+			employee_data << get_data[i].id << ","
+			<< get_data[i].name << ","
+			<< get_data[i].father_name << ","
+			<< get_data[i].address << ","
+			<< get_data[i].contact << std :: endl;
+		}else{
+			employee_data << "";
+		}
 	}
 	employee_data.close();
 	return 0;

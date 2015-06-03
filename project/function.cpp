@@ -23,7 +23,8 @@ int load_menu(){
 
 int get_add_employee(){
 	employees new_user;
-	new_user.id = 21;
+	std :: cout << "   Enter Id : " ;
+	std :: cin >> new_user.id;
 	std :: cin.ignore();
 	std :: cout << "   Enter Name : " ;
 	std :: getline (std :: cin , new_user.name);
@@ -60,11 +61,12 @@ int select_modify(){
 	if (value == 'e' || value == 'E'){
 		edit_employee();
 	}else if(value == 'd' || value == 'D'){
-		std :: cout << "Delete";
+		delete_employee();
 	}else if(value == '1'){
 		std :: string message = "";
 		main_navbar(message);//load main menu
 	}else{
+		std :: cout << "\n  Enter Wrong Value try again : \n";
 		select_modify();
 	}
 	return 0;
@@ -73,7 +75,7 @@ int select_modify(){
 int edit_employee(){
 	int value;
 	int count; 
-	std :: cout << "Enter id of employee to edit : ";
+	std :: cout << "  Enter id of employee to edit : ";
 	std :: cin >> value;
 	employees get_data[SIZE];
 	count = get_employees(get_data);
@@ -92,11 +94,32 @@ int edit_employee(){
 		}
 	}
 	save_edit(get_data,count);
-	std :: string message = "\nRecord has been Modified\n";
+	std :: string message = "\n  Record has been Modified\n";
 	main_navbar(message);
 	return 0;
 }
 
+int delete_employee(){
+	int id; 
+	std :: cout << "  Enter id of employee to Delete : ";
+	std :: cin >> id;
+	
+	char test;
+	std :: cout << "  Do you really want delete this record(y/n) : ";
+	std :: cin >> test;
+
+	if (test == 'y' || test == 'Y'){
+		delete_record(id);
+		std :: string message = "\n  Record has been Deleted\n";
+		main_navbar(message);
+	}else if(test == 'n' || test == 'N'){
+		std :: string message = "\n  Record has not been Deleted\n";
+		main_navbar(message);
+	}else{
+		std :: cout << "\n  Enter Wrong Value try again : \n"; 
+	}
+	return 0;
+}
 
 int redirect(){
 	int value;

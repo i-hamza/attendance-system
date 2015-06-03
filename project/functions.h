@@ -20,12 +20,13 @@ extern int load_menu();
 extern int get_add_employee();
 extern int modify();
 extern int select_modify();
+extern int delete_employee();
 extern int edit_employee();
 extern int redirect();
-
 
 //file page functions
 extern int save_employee(employees);
 extern int get_employees(employees[]);
+extern int delete_record(int);
 extern int save_edit(employees[],int);
 
