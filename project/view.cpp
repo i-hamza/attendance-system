@@ -23,6 +23,7 @@ int main_navbar(std::string message){
 int add_attendance(){
 	header();//load project heading
 	std::cout << "Add Attendance : \n";
+	get_add_attendance();
 	redirect();
 	return 0;
 }
@@ -30,6 +31,19 @@ int add_attendance(){
 int view_attendance(){
 	header();//load project heading
 	std::cout << "View Attendance : \n";
+	int values = 0;
+	data_attendance attendance_records[365];
+	values = get_attendance(attendance_records);
+	
+/*	for (int i = 0; i < values; ++i){
+		std :: cout << attendance_records[i].date << "  ";
+		int num_elements = sizeof( attendance_records[i].employees_attendance ) / sizeof( attendance_records[i].employees_attendance[0] );
+		
+		attendance_records[i].employees_attendance[0];
+		
+		std :: cout <<  num_elements << "  ";
+	}*/
+
 	redirect();
 	return 0;
 }

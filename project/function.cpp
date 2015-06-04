@@ -21,8 +21,29 @@ int load_menu(){
 	return 0;
 }
 
+int get_add_attendance(){
+	std :: string attendance_date;
+	employees get_data[SIZE];
+	attendance get_attendance_record[SIZE];
+	int count = 0;
+
+	std :: cout << "  Enter Date (dd-mm-yyyy) : ";
+	std :: cin.ignore();
+	std :: getline(std::cin,attendance_date);
+	count = get_employees(get_data);
+
+	for (int i = 0; i < count; ++i){
+		get_attendance_record[i].employee_id = get_data[i].id;
+		std :: cout << "  " <<  get_data[i].name << " : " ;
+		std :: cin >> get_attendance_record[i].employee_attendance;
+	}
+	save_attendance(get_attendance_record,count,attendance_date);
+	return 0;
+}
+
 int get_add_employee(){
 	employees new_user;
+	
 	std :: cout << "   Enter Id : " ;
 	std :: cin >> new_user.id;
 	std :: cin.ignore();
@@ -35,6 +56,9 @@ int get_add_employee(){
 	std :: cout << "   Enter Contact : " ;
 	std :: getline (std ::cin , new_user.contact);
 	save_employee(new_user);
+	
+	std :: string message = "\n  Record Has Been Added.\n";
+	main_navbar(message);
 	return 0;
 }
 
@@ -123,7 +147,7 @@ int delete_employee(){
 
 int redirect(){
 	int value;
-	std :: cout << "\n\nPress 1 to return main menu or Press 0 to exit : ";
+	std :: cout << "\n\n  Press 1 to return main menu or Press 0 to exit : ";
 	std :: cin >> value;
 	if (value == 1){
 		std :: string message = "";
