@@ -19,6 +19,7 @@ int get_attendance(data_attendance attendance_records[]){
 	std :: fstream attendance_data;
 	std :: string attendance_record;
 	int count = 0;
+	int i = 0;
 	attendance_data.open ("attendance.txt");
 
 	if(attendance_data.is_open()){
@@ -31,19 +32,19 @@ int get_attendance(data_attendance attendance_records[]){
 				if(n == 0){
 					attendance_records[count].date = token;
 				}else if(n == 1){
+					
 					std :: string recordss;
 					recordss = token;
 					std :: string sub_token;
 					std :: istringstream rr(recordss);
 					int i = 0;
-					
 					while(std::getline(rr, sub_token, '|')){
 						std :: string record;
 						record = sub_token;
 						std :: string employee_token;
 						std :: istringstream ee(record);
 						int j = 0;
-
+						
 						while(std::getline(ee, employee_token, ':')){
 							if(j == 0){
 							attendance_records[count].employees_attendance[i].employee_id = std :: stoi (employee_token);
@@ -52,14 +53,15 @@ int get_attendance(data_attendance attendance_records[]){
 							}
 							j++;
 						}
-					}
-					i++;
+						i++;
+					}	
 				}
 				n++;
 			}
 			count++;
 		}
 	}
+	
 	return count;
 }
 

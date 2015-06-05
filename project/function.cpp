@@ -41,6 +41,27 @@ int get_add_attendance(){
 	return 0;
 }
 
+int view_all_attendance(){
+	int count = 0;
+	data_attendance attendance_records[365];
+	employees get_data[SIZE];
+	count = get_attendance(attendance_records);
+	int count_employee = 0;
+	for (int i = 0; i < count; ++i){
+		std :: cout << "  "<< attendance_records[i].date << "  \n";
+		count_employee = get_employees(get_data);
+
+		for (int k = 0 ; k < count_employee ; k++){
+			if(attendance_records[i].employees_attendance[k].employee_id == get_data[k].id){
+				std :: cout << "  "<<  get_data[k].name << "  ";
+				std :: cout << attendance_records[i].employees_attendance[k].employee_attendance << " | ";
+			}
+		}
+		std :: cout << "  \n";
+	}
+	return 0;
+}
+
 int get_add_employee(){
 	employees new_user;
 	

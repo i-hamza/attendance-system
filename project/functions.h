@@ -28,6 +28,7 @@ extern int redirect();
 //file page functions
 extern int save_attendance(attendance [],int,std::string);
 extern int get_attendance(data_attendance []);
+extern int view_all_attendance();
 extern int save_employee(employees);
 extern int get_employees(employees[]);
 extern int delete_record(int);
