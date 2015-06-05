@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 #include <sstream>
 #include "structure.h"
 
@@ -23,6 +24,9 @@ extern int modify();
 extern int select_modify();
 extern int delete_employee();
 extern int edit_employee();
+extern int search_record();
+extern int search_data();
+extern int search_id();
 extern int redirect();
 
 //file page functions

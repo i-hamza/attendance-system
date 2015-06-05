@@ -7,7 +7,7 @@ int save_attendance(attendance save_data[],int count,std::string get_date){
 	attendance_data << get_date << "~"; 
 	for (int i = 0; i < count; ++i){
 		attendance_data << save_data[i].employee_id << ":"; 	
-		attendance_data << save_data[i].employee_attendance << "|";
+		attendance_data << save_data[i].employee_status << "|";
 	}
 	attendance_data << "\n"; 
 
@@ -49,7 +49,7 @@ int get_attendance(data_attendance attendance_records[]){
 							if(j == 0){
 							attendance_records[count].employees_attendance[i].employee_id = std :: stoi (employee_token);
 							}else if(j == 1){
-								attendance_records[count].employees_attendance[i].employee_attendance = employee_token[0];	
+								attendance_records[count].employees_attendance[i].employee_status = employee_token[0];	
 							}
 							j++;
 						}

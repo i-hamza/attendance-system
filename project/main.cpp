@@ -2,7 +2,7 @@
 *	Attendance System 
 *	
 *	By 
-*	M . Hamza Ameer(03-134142-062)
+*	Muhammad Hamza Ameer(03-134142-062)
 *	Faaiz Kamran (03-134142-022)
 *	
 *	Section BSCS 2b

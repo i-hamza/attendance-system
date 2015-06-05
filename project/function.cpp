@@ -35,7 +35,7 @@ int get_add_attendance(){
 	for (int i = 0; i < count; ++i){
 		get_attendance_record[i].employee_id = get_data[i].id;
 		std :: cout << "  " <<  get_data[i].name << " : " ;
-		std :: cin >> get_attendance_record[i].employee_attendance;
+		std :: cin >> get_attendance_record[i].employee_status;
 	}
 	save_attendance(get_attendance_record,count,attendance_date);
 	return 0;
@@ -54,7 +54,7 @@ int view_all_attendance(){
 		for (int k = 0 ; k < count_employee ; k++){
 			if(attendance_records[i].employees_attendance[k].employee_id == get_data[k].id){
 				std :: cout << "  "<<  get_data[k].name << "  ";
-				std :: cout << attendance_records[i].employees_attendance[k].employee_attendance << " | ";
+				std :: cout << attendance_records[i].employees_attendance[k].employee_status << " | ";
 			}
 		}
 		std :: cout << "  \n";
@@ -135,7 +135,6 @@ int edit_employee(){
 			getline(std :: cin,get_data[i].address);			
 			std :: cout << "  Enter Contact : " ;
 			getline(std :: cin,get_data[i].contact);			
-
 		}
 	}
 	save_edit(get_data,count);
@@ -162,6 +161,80 @@ int delete_employee(){
 		main_navbar(message);
 	}else{
 		std :: cout << "\n  Enter Wrong Value try again : \n"; 
+	}
+	return 0;
+}
+
+int search_record(){
+	int value;
+	std :: cout << "\n  Value : ";
+	std :: cin  >> value;
+	if (value == 1){
+		search_data();
+	}else if (value == 2){
+		search_id();
+	}
+	return 0;
+}
+
+int search_data(){
+	std :: string date;
+	std :: cout << "\n  Enter Date : ";
+	std :: cin.ignore();
+	std :: getline(std::cin,date);
+
+	int count = 0;
+	data_attendance attendance_records[365];
+	employees get_data[SIZE];
+	count = get_attendance(attendance_records);
+	int count_employee = 0;
+	for (int i = 0; i < count; ++i){
+		if(attendance_records[i].date == date){
+			std :: cout << "  "<< attendance_records[i].date << "  \n";
+			count_employee = get_employees(get_data);
+
+			for (int k = 0 ; k < count_employee ; k++){
+				if(attendance_records[i].employees_attendance[k].employee_id == get_data[k].id){
+					std :: cout << "  "<<  get_data[k].name << "  ";
+					std :: cout << attendance_records[i].employees_attendance[k].employee_status << " | ";
+				}
+			}
+		}
+	}
+	return 0;
+}
+
+int search_id(){
+	int id;
+	std :: cout << "\n  Enter Id : ";
+	std :: cin >> id;
+
+	int count = 0;
+	data_attendance attendance_records[365];
+	employees get_data[SIZE];
+	count = get_attendance(attendance_records);
+	int count_employee = 0;
+	count_employee = get_employees(get_data);
+
+	for (int i = 0; i < count; ++i){
+		if (get_data[i].id == id){
+			std :: cout << "  " << get_data[i].name << " , ";
+			std :: cout << "  " << get_data[i].father_name << " , ";
+			std :: cout << "  " << get_data[i].address << " , ";
+			std :: cout << "  " << get_data[i].contact << " \n\n";
+		}
+		
+	}
+
+	for (int i = 0; i < count; ++i){
+		std :: cout << "  "<< attendance_records[i].date << "  \t";
+
+		for (int k = 0 ; k < count_employee ; k++){
+			if(attendance_records[i].employees_attendance[k].employee_id == id){
+				std :: cout << attendance_records[i].employees_attendance[k].employee_status << " ";
+			}
+		}
+		std :: cout << "  \n";
 	}
 	return 0;
 }

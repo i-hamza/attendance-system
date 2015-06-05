@@ -7,6 +7,7 @@ int header(){
 	std::cout << "  Attendance System\n\n  ";
 	return 0;
 }
+
 int main_navbar(std::string message){
 	header();//load project heading
 	std::cout << "Press following no. to perform task : \n";
@@ -15,7 +16,7 @@ int main_navbar(std::string message){
 	std::cout << "   3 - Add Employee \n";
 	std::cout << "   4 - View Employees \n";
 	std::cout << "   5 - Search \n";
-	std::cout << message;
+	std::cout << message << "\n";
 	load_menu();
 	return 0;
 }
@@ -66,6 +67,7 @@ int search(){
 	std::cout << "  Press following no. to perform task : \n";
 	std::cout << "   1 - By Date \n";
 	std::cout << "   2 - By Employee \n";
+	search_record();
 	redirect();
 	return 0;
 }
