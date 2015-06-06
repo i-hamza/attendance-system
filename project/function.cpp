@@ -184,6 +184,7 @@ int search_data(){
 	std :: getline(std::cin,date);
 
 	int count = 0;
+	bool found = false;
 	data_attendance attendance_records[365];
 	employees get_data[SIZE];
 	count = get_attendance(attendance_records);
@@ -199,7 +200,12 @@ int search_data(){
 					std :: cout << attendance_records[i].employees_attendance[k].employee_status << " | ";
 				}
 			}
+			found = true;
 		}
+	}
+
+	if(!found){
+		std :: cout << "  Result was not found\n"; 
 	}
 	return 0;
 }
@@ -215,27 +221,32 @@ int search_id(){
 	count = get_attendance(attendance_records);
 	int count_employee = 0;
 	count_employee = get_employees(get_data);
-
+	bool found = false;
 	for (int i = 0; i < count; ++i){
 		if (get_data[i].id == id){
 			std :: cout << "  " << get_data[i].name << " , ";
 			std :: cout << "  " << get_data[i].father_name << " , ";
 			std :: cout << "  " << get_data[i].address << " , ";
 			std :: cout << "  " << get_data[i].contact << " \n\n";
+			found = true;
 		}
-		
 	}
 
-	for (int i = 0; i < count; ++i){
-		std :: cout << "  "<< attendance_records[i].date << "  \t";
+	if(found){
+		for (int i = 0; i < count; ++i){
+			std :: cout << "  "<< attendance_records[i].date << "  \t";
 
-		for (int k = 0 ; k < count_employee ; k++){
-			if(attendance_records[i].employees_attendance[k].employee_id == id){
-				std :: cout << attendance_records[i].employees_attendance[k].employee_status << " ";
+			for (int k = 0 ; k < count_employee ; k++){
+				if(attendance_records[i].employees_attendance[k].employee_id == id){
+					std :: cout << attendance_records[i].employees_attendance[k].employee_status << " ";
+				}
 			}
+			std :: cout << "  \n";
 		}
-		std :: cout << "  \n";
+	}else{
+		std :: cout << "  Result was not found\n"; 
 	}
+	
 	return 0;
 }
 
