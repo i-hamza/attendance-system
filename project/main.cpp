@@ -7,7 +7,7 @@
 *	
 *	Section BSCS 2b
 */
-#include "functions.h"
+#include "controller.h"
 
 using namespace std;
 

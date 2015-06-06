@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "controller.h"
 
 int save_attendance(attendance save_data[],int count,std::string get_date){
 	std::ofstream attendance_data;

@@ -1,6 +1,6 @@
 //This file load views of pages
 
-#include "functions.h"
+#include "controller.h"
 
 int header(){
 	system("CLS");

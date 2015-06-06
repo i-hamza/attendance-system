@@ -29,10 +29,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="functions.h">
+    <ClInclude Include="structure.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
-    <ClInclude Include="structure.h">
+    <ClInclude Include="controller.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "controller.h"
 
 int load_menu(){
 	int value;
