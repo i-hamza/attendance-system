@@ -1,7 +1,7 @@
 #include "controller.h"
 
 int load_menu(){
-	int value;
+	int value;//get value to load function
 	std :: cout << " Value: ";
 	std :: cin >> value;
 	if (value == 1){
@@ -16,28 +16,29 @@ int load_menu(){
 		search();
 	}else{
 		std :: cout <<  "Please Enter Valid no : \n";
-		load_menu();
+		load_menu();//reload if value does not match
 	}
 	return 0;
 }
 
 int get_add_attendance(){
-	std :: string attendance_date;
-	employees get_data[SIZE];
-	attendance get_attendance_record[SIZE];
+	std :: string attendance_date;//intial string
+	employees get_data[SIZE];//intial array
+	attendance get_attendance_record[SIZE];//intial array
 	int count = 0;
 
+	//get date
 	std :: cout << "  Enter Date (dd-mm-yyyy) : ";
 	std :: cin.ignore();
 	std :: getline(std::cin,attendance_date);
-	count = get_employees(get_data);
+	count = get_employees(get_data);//load employee record
 
 	for (int i = 0; i < count; ++i){
-		get_attendance_record[i].employee_id = get_data[i].id;
-		std :: cout << "  " <<  get_data[i].name << " : " ;
-		std :: cin >> get_attendance_record[i].employee_status;
+		get_attendance_record[i].employee_id = get_data[i].id;//set id = attendence id as forigen key 
+		std :: cout << "  " <<  get_data[i].name << " : " ;//show name of user
+		std :: cin >> get_attendance_record[i].employee_status;//get status
 	}
-	save_attendance(get_attendance_record,count,attendance_date);
+	save_attendance(get_attendance_record,count,attendance_date);//pass data to save attendance
 	return 0;
 }
 
@@ -45,13 +46,15 @@ int view_all_attendance(){
 	int count = 0;
 	data_attendance attendance_records[365];
 	employees get_data[SIZE];
-	count = get_attendance(attendance_records);
-	int count_employee = 0;
+	count = get_attendance(attendance_records);//get array of attendance
+
 	for (int i = 0; i < count; ++i){
 		std :: cout << "  "<< attendance_records[i].date << "  \n";
-		count_employee = get_employees(get_data);
+		int count_employee = 0;
+		count_employee = get_employees(get_data);//get array of employee
 
 		for (int k = 0 ; k < count_employee ; k++){
+			//show record if id match in attendance and employee array 
 			if(attendance_records[i].employees_attendance[k].employee_id == get_data[k].id){
 				std :: cout << "  "<<  get_data[k].name << "  ";
 				std :: cout << attendance_records[i].employees_attendance[k].employee_status << " | ";
@@ -63,6 +66,7 @@ int view_all_attendance(){
 }
 
 int get_add_employee(){
+	//get employee data 
 	employees new_user;
 	
 	std :: cout << "   Enter Id : " ;
@@ -76,10 +80,10 @@ int get_add_employee(){
 	std :: getline (std :: cin , new_user.address);
 	std :: cout << "   Enter Contact : " ;
 	std :: getline (std ::cin , new_user.contact);
-	save_employee(new_user);
+	save_employee(new_user);//save employee into file
 	
 	std :: string message = "\n  Record Has Been Added.\n";
-	main_navbar(message);
+	main_navbar(message);//load main menu and display message
 	return 0;
 }
 
@@ -87,6 +91,7 @@ int modify(){
 	char value;
 	std :: cout << "\n\n  Press m/M to Modify Record or Press 1 to goto Main menu : ";
 	std :: cin >> value;
+	//load edit , delete or load main menu
 	if (value == 'm' || value == 'M'){
 		select_modify();
 	}else if (value == '1'){
@@ -99,7 +104,8 @@ int modify(){
 }
 
 int select_modify(){
-	char value;
+	char value;//select edit or delete
+
 	std :: cout << "\n  For Go to main menu press 1\n"
 				<< "  For edit record press e/E and to delete record press d/D : ";
 	std :: cin >> value;
@@ -120,11 +126,13 @@ int select_modify(){
 int edit_employee(){
 	int value;
 	int count; 
+	bool found = false;
 	std :: cout << "  Enter id of employee to edit : ";
-	std :: cin >> value;
+	std :: cin >> value;//get id for edit
 	employees get_data[SIZE];
-	count = get_employees(get_data);
+	count = get_employees(get_data);//get employee employee array
 	for (int i = 0; i < count; ++i){
+		//get value if id match
 		if(get_data[i].id == value){
 			std :: cin.ignore();
 			std :: cout << "  Enter Name : " ;
@@ -135,27 +143,43 @@ int edit_employee(){
 			getline(std :: cin,get_data[i].address);			
 			std :: cout << "  Enter Contact : " ;
 			getline(std :: cin,get_data[i].contact);			
+			found = true;
 		}
 	}
-	save_edit(get_data,count);
-	std :: string message = "\n  Record has been Modified\n";
-	main_navbar(message);
+	//if record not found recall function
+	if(!found){
+		std :: cout << "  Record was not found\n"; 	
+		edit_employee();
+	}else{
+		save_edit(get_data,count);
+		//success messange if record not found
+		std :: string message = "\n  Record has been Modified\n";
+		main_navbar(message);
+	}
 	return 0;
 }
 
 int delete_employee(){
 	int id; 
 	std :: cout << "  Enter id of employee to Delete : ";
-	std :: cin >> id;
+	std :: cin >> id; //get id 
 	
 	char test;
 	std :: cout << "  Do you really want delete this record(y/n) : ";
 	std :: cin >> test;
 
 	if (test == 'y' || test == 'Y'){
-		delete_record(id);
-		std :: string message = "\n  Record has been Deleted\n";
-		main_navbar(message);
+		bool found;
+		found = delete_record(id);
+		if(!found){
+			//function recall if record not found
+			std ::  cout << "\n  Record has not been found\n";
+			delete_employee();
+		}else{
+			//success message
+			std :: string message = "\n  Record has been Deleted\n";
+			main_navbar(message);
+		}
 	}else if(test == 'n' || test == 'N'){
 		std :: string message = "\n  Record has not been Deleted\n";
 		main_navbar(message);
@@ -170,9 +194,9 @@ int search_record(){
 	std :: cout << "\n  Value : ";
 	std :: cin  >> value;
 	if (value == 1){
-		search_data();
+		search_data();//call search by date
 	}else if (value == 2){
-		search_id();
+		search_id();//call search by id
 	}
 	return 0;
 }
@@ -187,14 +211,15 @@ int search_data(){
 	bool found = false;
 	data_attendance attendance_records[365];
 	employees get_data[SIZE];
-	count = get_attendance(attendance_records);
+	count = get_attendance(attendance_records);//get attendance array
 	int count_employee = 0;
 	for (int i = 0; i < count; ++i){
 		if(attendance_records[i].date == date){
 			std :: cout << "  "<< attendance_records[i].date << "  \n";
-			count_employee = get_employees(get_data);
+			count_employee = get_employees(get_data);//get employee array
 
 			for (int k = 0 ; k < count_employee ; k++){
+				//view if if id is found
 				if(attendance_records[i].employees_attendance[k].employee_id == get_data[k].id){
 					std :: cout << "  "<<  get_data[k].name << "  ";
 					std :: cout << attendance_records[i].employees_attendance[k].employee_status << " | ";
@@ -203,7 +228,7 @@ int search_data(){
 			found = true;
 		}
 	}
-
+	//if result not found show error
 	if(!found){
 		std :: cout << "  Result was not found\n"; 
 	}
@@ -213,16 +238,17 @@ int search_data(){
 int search_id(){
 	int id;
 	std :: cout << "\n  Enter Id : ";
-	std :: cin >> id;
+	std :: cin >> id;//get id
 
 	int count = 0;
 	data_attendance attendance_records[365];
 	employees get_data[SIZE];
-	count = get_attendance(attendance_records);
+	count = get_attendance(attendance_records);//get attendance array
 	int count_employee = 0;
 	count_employee = get_employees(get_data);
 	bool found = false;
 	for (int i = 0; i < count; ++i){
+		//show id if id ws found 
 		if (get_data[i].id == id){
 			std :: cout << "  " << get_data[i].name << " , ";
 			std :: cout << "  " << get_data[i].father_name << " , ";
